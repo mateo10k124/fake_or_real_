@@ -1,0 +1,558 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fake or Real? | Digital Citizenship</title>
+
+<style>
+:root {
+  --navy: #101d36;
+  --blue: #2563eb;
+  --light: #f3f6fc;
+  --green: #16a36a;
+  --red: #e5484d;
+  --text: #17243b;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: Arial, sans-serif;
+  background: var(--light);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+nav {
+  background: var(--navy);
+  color: white;
+  padding: 18px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-size: 23px;
+  font-weight: bold;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 18px;
+  font-size: 14px;
+}
+
+nav a:hover { color: #82b1ff; }
+
+.hero {
+  background: linear-gradient(120deg, #101d36, #2456a6);
+  color: white;
+  text-align: center;
+  padding: 90px 20px;
+}
+
+.hero h1 {
+  font-size: clamp(38px, 6vw, 65px);
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 18px;
+  color: #dce8ff;
+  margin-bottom: 25px;
+}
+
+button, .main-button {
+  border: none;
+  padding: 13px 24px;
+  border-radius: 9px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.main-button {
+  background: #fff;
+  color: var(--navy);
+}
+
+button:hover, .main-button:hover {
+  opacity: .85;
+  transform: translateY(-1px);
+}
+
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  background: white;
+  padding: 22px;
+  text-align: center;
+}
+
+.stat strong {
+  display: block;
+  font-size: 26px;
+  color: var(--blue);
+}
+
+section {
+  padding: 65px 8%;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.section-title h2 {
+  font-size: 32px;
+  color: var(--navy);
+}
+
+.section-title p {
+  color: #64748b;
+  margin-top: 8px;
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
+}
+
+.card {
+  background: white;
+  padding: 22px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px #17243b10;
+}
+
+.video-frame {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  border-radius: 10px;
+  background: #dce4f0;
+  margin-bottom: 14px;
+}
+
+.video-placeholder {
+  display: grid;
+  place-items: center;
+  color: #52647d;
+  font-weight: bold;
+}
+
+.game-section {
+  background: #eaf0fb;
+}
+
+.game-box {
+  max-width: 750px;
+  margin: auto;
+  background: white;
+  padding: 30px;
+  border-radius: 18px;
+  box-shadow: 0 8px 30px #17243b12;
+}
+
+.news-label {
+  color: var(--blue);
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.news {
+  font-size: 21px;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+.answers {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.answers button {
+  flex: 1;
+  min-width: 120px;
+  color: white;
+}
+
+.real { background: var(--green); }
+.fake { background: var(--red); }
+
+#feedback {
+  margin-top: 22px;
+  padding: 15px;
+  border-radius: 9px;
+  display: none;
+}
+
+#nextButton {
+  background: var(--navy);
+  color: white;
+  margin-top: 15px;
+  display: none;
+}
+
+.survey {
+  text-align: center;
+}
+
+.survey iframe {
+  width: 100%;
+  height: 650px;
+  border: 0;
+  border-radius: 12px;
+  background: white;
+}
+
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 18px;
+}
+
+.tip {
+  background: white;
+  padding: 23px;
+  border-radius: 13px;
+}
+
+.tip h3 {
+  color: var(--blue);
+  margin-bottom: 8px;
+}
+
+footer {
+  background: var(--navy);
+  color: white;
+  text-align: center;
+  padding: 30px 15px;
+}
+
+footer p { color: #c7d5ed; }
+
+@media(max-width: 650px) {
+  nav { justify-content: center; }
+  nav a { margin: 5px; }
+  .stats { gap: 20px; }
+  section { padding: 45px 5%; }
+}
+</style>
+
+/*contador*/
+<script
+    data-goatcounter="https://fakeorrealproject.goatcounter.com/count"
+    async
+    src="https://gc.zgo.at/count.js">
+</script>
+
+</head>
+
+<body>
+
+<nav>
+  <div class="logo">FAKE OR REAL?</div>
+  <div>
+    <a href="#videos">Videos</a>
+    <a href="#game">Game</a>
+    <a href="#survey">Survey</a>
+    <a href="#tips">Tips</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <h1>FAKE OR REAL?</h1>
+  <p>Think before you believe. Verify before you share.</p>
+  <p>Become a responsible Global Digital Citizen.</p>
+  <button class="main-button" onclick="enterPlatform()">
+    ENTER THE PLATFORM
+  </button>
+  <p id="loginMessage" style="margin-top:15px"></p>
+</header>
+
+<div class="stats">
+  <div class="stat">
+    <strong>2</strong>
+    Educational videos
+  </div>
+  <div class="stat">
+    <strong>5</strong>
+    Game questions
+  </div>
+</div>
+
+<!-- VIDEOS -->
+<section id="videos">
+  <div class="section-title">
+    <h2>Our Educational Videos</h2>
+    <p>Learn how to recognize real and fake news.</p>
+  </div>
+
+  <div class="video-grid">
+    <div class="card">
+      <iframe class="video-frame"
+        src="https://www.youtube.com/embed/t2N_yP7F1wI"
+        title="Real News Video"
+        allowfullscreen></iframe>
+      <h3>Video 1 – Real News</h3>
+      <p>Discover how real news is presented and verified.</p>
+    </div>
+
+    <div class="card">
+      <iframe class="video-frame"
+        src="https://www.youtube.com/embed/OpTDJH1yyck"
+        title="Fake News Video"
+        allowfullscreen></iframe>
+      <h3>Video 2 – Fake News</h3>
+      <p>Learn how misleading information can look convincing.</p>
+    </div>
+  </div>
+
+</section>
+
+<!-- GAME -->
+<section id="game" class="game-section">
+  <div class="section-title">
+    <h2>Interactive Game</h2>
+    <p>Can you identify fake news?</p>
+  </div>
+
+  <div class="game-box">
+    <div class="news-label" id="questionNumber">
+      QUESTION 1 OF 5
+    </div>
+
+    <h3 id="category">Technology</h3>
+    <p class="news" id="newsText"></p>
+
+    <div class="answers">
+      <button class="real" onclick="answer(true)">REAL</button>
+      <button class="fake" onclick="answer(false)">FAKE</button>
+    </div>
+
+    <div id="feedback"></div>
+
+    <button id="nextButton" onclick="nextQuestion()">
+      NEXT QUESTION
+    </button>
+
+    <h3 id="score" style="margin-top:20px">
+      Score: 0 / 5
+    </h3>
+  </div>
+</section>
+
+<!-- SURVEY -->
+<section id="survey" class="survey">
+  <div class="section-title">
+    <h2>Student Survey</h2>
+    <p>Tell us how you verify information online.</p>
+  </div>
+
+  <iframe
+    src="https://docs.google.com/forms/d/e/1FAIpQLSev-FRD4-HDr5zOlUOelprvOOP9IU7xgBV4PX_1GSW-jzRmnw/viewform?embedded=true"
+    loading="lazy">
+  </iframe>
+
+  <p style="margin-top:15px">
+    <a target="_blank" rel="noopener"
+    href="https://docs.google.com/forms/d/e/1FAIpQLSev-FRD4-HDr5zOlUOelprvOOP9IU7xgBV4PX_1GSW-jzRmnw/viewform">
+      Open the survey in a new tab
+    </a>
+  </p>
+</section>
+
+<!-- TIPS -->
+<section id="tips" style="background:#eaf0fb">
+  <div class="section-title">
+    <h2>How to Identify Fake News</h2>
+    <p>Five simple ways to verify information.</p>
+  </div>
+
+  <div class="tips-grid">
+    <div class="tip">
+      <h3>01. Check the Source</h3>
+      <p>Make sure the website or author is trustworthy.</p>
+    </div>
+    <div class="tip">
+      <h3>02. Check the Date</h3>
+      <p>Old news can be shared as if it were new.</p>
+    </div>
+    <div class="tip">
+      <h3>03. Compare Sources</h3>
+      <p>Look for the same information on other reliable websites.</p>
+    </div>
+    <div class="tip">
+      <h3>04. Look for Evidence</h3>
+      <p>Check whether the information includes verifiable facts.</p>
+    </div>
+    <div class="tip">
+      <h3>05. Think Before Sharing</h3>
+      <p>Do not share information you have not verified.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <h2>FAKE OR REAL?</h2>
+  <p>Global Cyber Citizenship Project</p>
+  <p>Think critically. Share responsibly.</p>
+</footer>
+
+<script>
+function enterPlatform() {
+  document.getElementById("loginMessage").textContent =
+    "Welcome! Explore the videos and test your knowledge.";
+  document.getElementById("videos").scrollIntoView({ behavior: "smooth" });
+}
+
+// INTERACTIVE GAME
+// These are fictional educational scenarios, not real news reports.
+const questions = [
+  {
+    category: "Technology",
+    news: "A website claims that a normal smartphone can read your thoughts without any special technology.",
+    real: false,
+    explanation: "This is an unsupported claim. Extraordinary scientific claims need reliable evidence and independent verification."
+  },
+  {
+    category: "Environment",
+    news: "The United Nations publishes reports about climate change and environmental issues.",
+    real: true,
+    explanation: "This is a genuine type of publication from an established international organization. Always check the specific report and its date."
+  },
+  {
+    category: "Social Media",
+    news: "A viral post says that sharing it ten times will give every user a free new phone.",
+    real: false,
+    explanation: "This is a typical suspicious giveaway claim. Check the official brand website before trusting it."
+  },
+  {
+    category: "Science",
+    news: "Scientific research can be checked through academic journals and university websites.",
+    real: true,
+    explanation: "Yes. Academic journals and university websites can provide useful evidence. Check the author, publication and research quality."
+  },
+  {
+    category: "Online Safety",
+    news: "A message asks you to click an unknown link and enter your password to avoid losing your account.",
+    real: false,
+    explanation: "This is a common phishing warning sign. Never enter your password through suspicious links. Visit the official website directly."
+  }
+];
+
+let current = 0;
+let points = 0;
+let answered = false;
+
+function showQuestion() {
+  const q = questions[current];
+
+  document.getElementById("questionNumber").textContent =
+    `QUESTION ${current + 1} OF ${questions.length}`;
+
+  document.getElementById("category").textContent = q.category;
+  document.getElementById("newsText").textContent = q.news;
+  document.getElementById("feedback").style.display = "none";
+  document.getElementById("nextButton").style.display = "none";
+  document.getElementById("score").textContent =
+    `Score: ${points} / ${questions.length}`;
+
+  document.querySelectorAll(".answers button").forEach(button => {
+    button.disabled = false;
+    button.style.opacity = "1";
+  });
+
+  answered = false;
+}
+
+function answer(choice) {
+  if (answered) return;
+  answered = true;
+
+  const q = questions[current];
+  const correct = choice === q.real;
+
+  if (correct) points++;
+
+  const feedback = document.getElementById("feedback");
+  feedback.style.display = "block";
+  feedback.style.background = correct ? "#dcfce7" : "#fee2e2";
+  feedback.style.color = "#17243b";
+
+  feedback.innerHTML =
+    `<strong>${correct ? "CORRECT! ✓" : "NOT QUITE! ✗"}</strong>
+     <p>The correct answer is: <strong>${q.real ? "REAL" : "FAKE"}</strong></p>
+     <p>${q.explanation}</p>`;
+
+  document.getElementById("score").textContent =
+    `Score: ${points} / ${questions.length}`;
+
+  document.getElementById("nextButton").style.display = "inline-block";
+
+  document.querySelectorAll(".answers button").forEach(button => {
+    button.disabled = true;
+    button.style.opacity = ".65";
+  });
+}
+
+function nextQuestion() {
+  current++;
+
+  if (current >= questions.length) {
+    showResults();
+  } else {
+    showQuestion();
+  }
+}
+
+function showResults() {
+  document.getElementById("questionNumber").textContent = "GAME COMPLETED";
+  document.getElementById("category").textContent = "Your final result";
+  document.getElementById("newsText").textContent =
+    `You got ${points} out of ${questions.length} correct answers!`;
+
+  document.querySelector(".answers").innerHTML = "";
+
+  const feedback = document.getElementById("feedback");
+  feedback.style.display = "block";
+  feedback.style.background = "#e0edff";
+
+  let message = points >= 4
+    ? "Excellent! You are a smart digital citizen!"
+    : points >= 3
+    ? "Good job! Keep checking your sources."
+    : "Keep learning! Always verify information before sharing.";
+
+  feedback.textContent = message;
+
+  document.getElementById("score").textContent =
+    `Final score: ${points} / ${questions.length}`;
+
+  const next = document.getElementById("nextButton");
+  next.textContent = "PLAY AGAIN";
+  next.style.display = "inline-block";
+  next.onclick = () => location.reload();
+}
+
+showQuestion();
+</script>
+</body>
+</html>
